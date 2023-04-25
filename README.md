@@ -1,16 +1,14 @@
 # shop_app
 
-A new Flutter project.
+In this Ecommerce Store:
+-> A user can authenticate using email and password.
+-> A user can list their products to the store.
+-> A user can favorite item.
+-> A user can view all the products from others users and place an order.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Tools and Technologies:
+-> Flutter and Dart.
+-> Firebase Restapi Authentication.
+-> Firebase Realtime Database.
+-> Provider State Management.
+-> Http Requests.
