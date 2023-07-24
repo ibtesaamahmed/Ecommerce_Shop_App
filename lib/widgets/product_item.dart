@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/providers/auth.dart';
-import 'package:flutter_complete_guide/providers/products.dart';
 import 'package:provider/provider.dart';
 
 import '/providers/product.dart';
@@ -8,11 +7,6 @@ import '/providers/cart.dart';
 import '/screens/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
-  // final String id;
-  // final String title;
-  // final String imageUrl;
-  // ProductItem(this.id, this.title, this.imageUrl);
-
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
@@ -38,9 +32,9 @@ class ProductItem extends StatelessWidget {
               icon: Icon(
                   product.isFavorite ? Icons.favorite : Icons.favorite_border),
               onPressed: () {
-                product.toggleFavoriteStatus(authData.token, authData.userId);
+                product.toggleFavoriteStatus(authData.token!, authData.userId!);
               },
-              color: Theme.of(context).accentColor,
+              color: Colors.deepOrange,
             ),
           ),
           title: SingleChildScrollView(
@@ -70,7 +64,7 @@ class ProductItem extends StatelessWidget {
                 ),
               );
             },
-            color: Theme.of(context).accentColor,
+            color: Colors.deepOrange,
           ),
         ),
       ),

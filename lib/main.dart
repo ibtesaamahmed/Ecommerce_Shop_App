@@ -21,10 +21,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return
-        // ChangeNotifierProvider.value(
-        //   create: (ctx) => Products(),
-        MultiProvider(
+    return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => Auth()),
         ChangeNotifierProxyProvider<Auth, Products>(
@@ -37,8 +34,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (ctx) => Cart()),
         ChangeNotifierProxyProvider<Auth, Orders>(
           create: (ctx) => Orders('', [], ''),
-          update: (ctx, auth, previousOrders) => Orders(auth.token,
-              previousOrders == null ? [] : previousOrders.orders, auth.userId),
+          update: (ctx, auth, previousOrders) => Orders(
+              auth.token == null ? '' : auth.token!,
+              previousOrders == null ? [] : previousOrders.orders,
+              auth.userId!),
         ),
       ],
       child: Consumer<Auth>(
@@ -47,7 +46,6 @@ class MyApp extends StatelessWidget {
           title: 'MyShop',
           theme: ThemeData(
             primarySwatch: Colors.indigo,
-            accentColor: Colors.deepOrange,
             fontFamily: 'Lato',
           ),
           home: auth.isAuth

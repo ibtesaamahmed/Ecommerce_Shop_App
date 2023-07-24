@@ -1,14 +1,11 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/providers/products.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart';
 
 import '/widgets/app_drawer.dart';
 import '/screens/cart_screen.dart';
 import '/widgets/products_grid.dart';
-import '/widgets/badge.dart';
+import '/widgets/badge.dart' as badge;
 import '/providers/cart.dart';
 
 enum FilterOptions {
@@ -25,14 +22,6 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
-
-  // @override
-  // void initState() {
-  //   Future.delayed(Duration.zero).then((_) {
-  //     Provider.of<Products>(context).fetchAndSetProducts();
-  //   });
-  //   super.initState();
-  // }
 
   @override
   void didChangeDependencies() {
@@ -79,8 +68,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             ],
           ),
           Consumer<Cart>(
-            builder: (ctx, cart, ch) => Badge(
-              child: ch,
+            builder: (ctx, cart, ch) => badge.Badge(
+              child: ch!,
               value: cart.itemCount.toString(),
             ),
             child: IconButton(

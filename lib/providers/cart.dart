@@ -7,10 +7,10 @@ class CartItem {
   final double price;
 
   CartItem(
-      {@required this.id,
-      @required this.title,
-      @required this.quantity,
-      @required this.price});
+      {required this.id,
+      required this.title,
+      required this.quantity,
+      required this.price});
 }
 
 class Cart with ChangeNotifier {
@@ -33,7 +33,6 @@ class Cart with ChangeNotifier {
 
   void addItem(String productId, double price, String title) {
     if (_items.containsKey(productId)) {
-      //change quantity
       _items.update(
           productId,
           (existingCartItem) => CartItem(
@@ -67,7 +66,7 @@ class Cart with ChangeNotifier {
   void removeSingleItem(String productId) {
     if (!_items.containsKey(productId)) {
       return;
-    } else if (_items[productId].quantity > 1) {
+    } else if (_items[productId]!.quantity > 1) {
       _items.update(
           productId,
           (existingCartItem) => CartItem(

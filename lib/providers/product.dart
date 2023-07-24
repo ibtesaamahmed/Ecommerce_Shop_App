@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/constants.dart';
 import 'package:http/http.dart' as http;
 
 class Product with ChangeNotifier {
@@ -11,11 +12,11 @@ class Product with ChangeNotifier {
   final String imageUrl;
   bool isFavorite;
   Product(
-      {@required this.id,
-      @required this.title,
-      @required this.description,
-      @required this.price,
-      @required this.imageUrl,
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.price,
+      required this.imageUrl,
       this.isFavorite = false});
 
   void _setFavValueOnException(bool oldValue) {
@@ -27,8 +28,7 @@ class Product with ChangeNotifier {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
-    final url = Uri.parse(
-        'https://my-shop-app-123-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token');
+    final url = Uri.parse('$link/userFavorites/$userId/$id.json?auth=$token');
     try {
       final response = await http.put(url, body: json.encode(isFavorite));
       if (response.statusCode >= 400) {

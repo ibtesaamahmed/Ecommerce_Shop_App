@@ -12,7 +12,7 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  Future _ordersFuture;
+  Future? _ordersFuture;
   Future _obtainOrdersFuture() {
     return Provider.of<Orders>(context, listen: false).fetchAndSetOrders();
   }
@@ -26,7 +26,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     print('building ordersssss!!!!');
-    // final orderData = Provider.of<Orders>(context);
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Your Orders'),
@@ -39,7 +39,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
               return Center(child: CircularProgressIndicator());
             } else {
               if (dataSnapshot.error != null) {
-                // Do Error Handling
                 return Center(
                   child: Text('An Error Occured!!'),
                 );
